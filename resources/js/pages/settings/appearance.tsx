@@ -4,6 +4,7 @@ import AppearanceTabs from '@/components/appearance-tabs';
 import HeadingSmall from '@/components/heading-small';
 import { type BreadcrumbItem } from '@/types';
 
+import LocaleSelector from '@/components/locale-selector';
 import AppLayout from '@/layouts/app-layout';
 import SettingsLayout from '@/layouts/settings/layout';
 import { edit as editAppearance } from '@/routes/appearance';
@@ -15,7 +16,13 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Appearance() {
+export default function Appearance({
+    locales,
+    currentLocale,
+}: {
+    locales: string[];
+    currentLocale: string;
+}) {
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Appearance settings" />
@@ -27,6 +34,10 @@ export default function Appearance() {
                         description="Update your account's appearance settings"
                     />
                     <AppearanceTabs />
+                    <LocaleSelector
+                        locales={locales}
+                        currentLocale={currentLocale}
+                    />
                 </div>
             </SettingsLayout>
         </AppLayout>

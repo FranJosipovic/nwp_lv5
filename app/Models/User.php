@@ -50,4 +50,28 @@ class User extends Authenticatable
             'two_factor_confirmed_at' => 'datetime',
         ];
     }
+
+    /**
+     * Get tasks owned by this user (for teachers)
+     */
+    public function ownedTasks()
+    {
+        return $this->hasMany(Task::class, 'owner_id');
+    }
+
+    /**
+     * Get tasks assigned to this user (for students)
+     */
+    public function assignedTasks()
+    {
+        return $this->hasMany(Task::class, 'assignee_id');
+    }
+
+    /**
+     * Get applications submitted by this user
+     */
+    public function applications()
+    {
+        return $this->hasMany(Application::class);
+    }
 }

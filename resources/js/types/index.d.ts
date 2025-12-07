@@ -27,6 +27,7 @@ export interface SharedData {
     quote: { message: string; author: string };
     auth: Auth;
     sidebarOpen: boolean;
+    translations: Translations;
     [key: string]: unknown;
 }
 
@@ -40,4 +41,10 @@ export interface User {
     created_at: string;
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
+}
+
+export interface Translations {
+    [section: string]: {
+        [key: string]: string;
+    };
 }
